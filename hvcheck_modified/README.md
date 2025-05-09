@@ -80,3 +80,8 @@ If you have the line of header of Geopsy file (.hv) more than 6 line, you just n
 # CONTACT
 This code has been written by Aulia Khalqillah,S.Si.,M.Si (2020)<br>
 Email: auliakhalqillah.mail@gmail.com 
+
+# ------------------------------------------------------------------------------------------------------------------------------------------
+# EDITED        : - 24 Nov 2024, Michael Partogi. Solving hvcheck module for returning clear peak criteria
+#                 - 12 Jan 2025, Annora Vandanu Erlangga. Add script to read .log dan .hv files in batch processing for SESAME criteria
+# ------------------------------------------------------------------------------------------------------------------------------------------
