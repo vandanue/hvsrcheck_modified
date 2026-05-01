@@ -26,9 +26,10 @@ change `pip` to `pip3` if you are using Linux
 # USAGE
 Go to test folder and run the `geopsy_hvsrcheck.py` by following command:
 ```
-python3 geopsy_hvsrcheck.py
+python geopsy_hvsrcheck.py
 ```
 
+change `python` to `python3` if you are using Linux
 
 if the modules has been successfully installed, the information of reliable and clear peak will show up, like this:
 ```
