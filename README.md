@@ -1,15 +1,20 @@
 # HVSR CHECK FOR RELIABLE AND CLEAR PEAK OF H/V CURVE
 This is a program to check reliable and clear peak of H/V curve from Geopsy file (.hv) called `hvsrcheck`.<br>
-The program has been written based on information from [**GUIDELINES FOR THE IMPLEMENTATION OF THE H/V SPECTRAL RATIO TECHNIQUE ON AMBIENT VIBRATIONS MEASUREMENTS,SESAME 2004**](http://sesame.geopsy.org/SES_Reports.htm)
+The program has been written based on information from project SESAME, [(2004)](https://sesame.geopsy.org/Delivrables/Del-D23-HV_User_Guidelines.pdf)
+
 # REQUIRED
 1. Numpy
 2. Pandas
 3. Python 3 (Recommended >=3.7)
+
 # INSTALL
 Type the following command to install the modules of `hvsrcheck`:
 ```
-python3 setup.py install --record installpath.txt
+pip install .
 ```
+change `pip` to `pip3` if you are using Linux
+
+
 # USAGE
 Go to test folder and run the `geopsy_hvsrcheck.py` by following command:
 ```
