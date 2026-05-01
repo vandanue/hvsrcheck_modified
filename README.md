@@ -98,4 +98,4 @@ Email: auliakhalqillah.mail@gmail.com
 - 24 Nov 2024, Michael Partogi. Solving hvcheck module for returning clear peak criteria.
 - 12 Jan 2025, Annora Vandanu Erlangga. Add script to read .log dan .hv files in batch processing for SESAME criteria.
 
-Email: annora.vandanu @ui.ac.id
+Email: annora.vandanu@ui.ac.id
