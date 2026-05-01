@@ -23,10 +23,10 @@ import pandas as pd
 import re
 from hvcheck import hvsrcheck
 
-def main():
-    # Pindah ke folder yang ada file-nya
-    os.chdir(r"D:\Kulon Progo 2025\Seismik Pasif\HV Curve")
+# Change the folder to your .hv and .log files
+os.chdir(r"/media/vandanu/HDD/00_College/Asdos/Kulon_Progo/passive_seismic/hvsr")
 
+def main():
     files = [f for f in os.listdir() if f.endswith('.hv')]
     print("Files ditemukan:", files)
     prefixes = {f[:-3] for f in files}
@@ -35,7 +35,9 @@ def main():
         process_hvsr(prefix)
 
 def find_window_info(logfile_path):
-    """Mencari number of window dan window length dari file .log"""
+    """
+    Read number of window and window length from .log files
+    """
     with open(logfile_path, 'r') as logfile:
         lines = logfile.readlines()
         
@@ -44,28 +46,29 @@ def find_window_info(logfile_path):
         
         for i, line in enumerate(lines):
             if "Number=" in line:
-                window_number = int(line.split('=')[-1].strip())  # Ambil angka setelah "="
-                window_line_index = i  # Simpan indeks baris ini untuk referensi
+                window_number = int(line.split('=')[-1].strip())
+                window_line_index = i
                 
             elif window_line_index is not None and i == window_line_index + 2:
-                # Cari angka terakhir di baris setelah "Start time End Time Window length"
                 values = line.strip().split()
                 if values:
                     try:
-                        window_length = float(values[-1])  # Ambil angka terakhir
+                        window_length = float(values[-1])
                     except ValueError:
                         pass
-                break  # Sudah dapat window_length, keluar dari loop
+                break
         
     return window_number, window_length
 
 def process_hvsr(file_prefix):
-    """Memproses file HVSR berdasarkan prefix nama file (uT1, uT2, dst)."""
+    """
+    Read .hv files based on filename prefix
+    """
     filename = f"{file_prefix}.hv"
     logname = f"{file_prefix}.log"
     
     if not os.path.exists(filename) or not os.path.exists(logname):
-        print(f"File {filename} atau {logname} tidak ditemukan.")
+        print(f"File {filename} or {logname} not found.")
         return
     
     with open(filename, "r") as data:

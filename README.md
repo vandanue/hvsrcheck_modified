@@ -8,12 +8,20 @@ The program has been written based on information from project SESAME, [(2004)](
 3. Python 3 (Recommended >=3.7)
 
 # INSTALL
+1. Install the `hvsrcheck`
+
 Type the following command to install the modules of `hvsrcheck`:
 ```
 pip install .
 ```
-change `pip` to `pip3` if you are using Linux
 
+2. Install the requirement library
+
+```
+pip install -r requirement.txt
+```
+
+change `pip` to `pip3` if you are using Linux
 
 # USAGE
 Go to test folder and run the `geopsy_hvsrcheck.py` by following command:
@@ -68,6 +76,7 @@ CLEAR PEAK SUMMARY	: 4 out of 6 criteria fulfilled
 CLEAR PEAK SUMMARY	: H/V IS NOT CLEAR PEAK [at least 5 out of 6 criteria fulfilled]
 ```
 To run with your Geopsy files, you just need change the file name and log name in `geopsy_hvsrcheck.py` file.
+
 # NOTE
 The file of `geopsy_hvsrcheck.py` will read if the line of header of Geopsy file (.hv) has 6 lines header, for an example:
 ```

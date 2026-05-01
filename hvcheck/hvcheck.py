@@ -94,10 +94,10 @@ def hvsrcheck(indict):
 
     if indict['stdf0'] < epsf0:
         cc = 1
-        print(f"CLEAR PEAK 5 - OK\t: stdf0 < epsilon(f0) = {indict['stdf0']} < {epsf0}")
+        print(f"CLEAR PEAK 5 - OK\t: stdf0 < \u03B5(f0) = {indict['stdf0']} < {epsf0}")
     else:
         cc = 0
-        print(f"CLEAR PEAK 5 - NO\t: stdf0 >= epsilon(f0) = {indict['stdf0']} >= {epsf0}")
+        print(f"CLEAR PEAK 5 - NO\t: stdf0 >= \u03B5(f0) = {indict['stdf0']} >= {epsf0}")
     clear_count.append(cc)
     
     # (6) stdA(f0) < theta(f0)
@@ -114,10 +114,10 @@ def hvsrcheck(indict):
 
     if indict['stdA'] < thetaf0:
         cc = 1
-        print(f"CLEAR PEAK 6 - OK\t: stdA(F0) < theta(F0) = {indict['stdA']} < {thetaf0}")
+        print(f"CLEAR PEAK 6 - OK\t: stdA(F0) < \u03B8(F0) = {indict['stdA']} < {thetaf0}")
     else:
         cc = 0
-        print(f"CLEAR PEAK 6 - NO\t: stdA(F0) >= theta(F0) = {indict['stdA']} >= {thetaf0}")
+        print(f"CLEAR PEAK 6 - NO\t: stdA(F0) >= \u03B8(F0) = {indict['stdA']} >= {thetaf0}")
     clear_count.append(cc)
     
     # Summary
