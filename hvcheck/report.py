@@ -30,25 +30,25 @@ def theta_f0(F0):
 
 def print_report(data, results):
 
-    print("-----------------------------------------------------------------------")
+    print("\n\n\n-----------------------------------------------------------------------")
     print(f"File Name\t\t: {data['filename']}")
     print("-----------------------------------------------------------------------")
 
-    print("CRITERIA FOR A RELIABLE H/V CURVE")
+    print("\nCRITERIA FOR A RELIABLE H/V CURVE")
 
     print(
         "RELIABLE 1:",
-        "OK" if results["reliable_1"] else "NO"
+        "OK" if results["reliable_1"] else f"NO, f_0 < 10/l_w ({data["F0"]} < 10/{data["winlength"]})"
     )
 
     print(
         "RELIABLE 2:",
-        "OK" if results["reliable_2"] else "NO"
+        "OK" if results["reliable_2"] else f"NO, n_c(f_0) < 200 ({data["winlength"]*data["window"]*data["F0"]} < 200)"
     )
 
     print(
         "RELIABLE 3:",
-        "OK" if results["reliable_3"] else "NO"
+        "OK" if results["reliable_3"] else "NO, \u03C3 H/V(f) > 2"
     )
 
     print("\nCLEAR PEAK SUMMARY:",
