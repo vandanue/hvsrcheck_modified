@@ -59,3 +59,27 @@ def print_report(data, results):
         print("H/V IS CLEAR PEAK")
     else:
         print("H/V IS NOT CLEAR PEAK")
+
+
+def all_output(data, results):
+    print("\n\n-----------------------------------------------------------------------")
+
+    print(f"{data['filename']} OUTPUT")
+
+    print(
+        "RELIABLE 1:",
+        f"{data["F0"]} {'>' if results["reliable_1"] else '<'} 10/l_w"
+    )
+    
+    print(
+        "RELIABLE 2:",
+        f"{data["winlength"]*data["window"]*data["F0"]} {'>' if results["nc"] else '<'} 200"
+    )
+
+    print(
+        "RELIABLE 3:",
+        # f"{'\u03C3 H/V(f) > 2' if data["frhv"] > 0.5 * data["F0"] else }"
+        f"\u03C3 H/V(f) {'<' if results["reliable_3"] else '>'} 2"
+    )
+
+    # Add all the clear peak output later

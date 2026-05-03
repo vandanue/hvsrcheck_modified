@@ -52,7 +52,7 @@ def hvsrcheck(data):
     )[0]
 
     idfr2 = np.where(
-        data["frhv"] < 2 * data["F0"]
+        data["frhv"] < 0.5 * data["F0"]
     )[0]
 
     r31 = (
@@ -61,7 +61,7 @@ def hvsrcheck(data):
     )
 
     r32 = (
-        np.all(data["stdhv"][idfr2] < 2)
+        np.all(data["stdhv"][idfr2] < 3)
         if len(idfr2) > 0 else False
     )
 
