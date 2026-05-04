@@ -57,6 +57,7 @@ def process_hvsr(prefix):
     results = hvsrcheck(data)
 
     print_report(data, results)
+    all_output(data, results)
 
 
 def main():

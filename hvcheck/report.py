@@ -62,24 +62,71 @@ def print_report(data, results):
 
 
 def all_output(data, results):
-    print("\n\n-----------------------------------------------------------------------")
-
-    print(f"{data['filename']} OUTPUT")
+    print("\n-----------------------------------------------------------------------")
+    print("RELIABILITY OUTPUT")
 
     print(
         "RELIABLE 1:",
-        f"{data["F0"]} {'>' if results["reliable_1"] else '<'} 10/l_w"
+        f"{'CRITERIA FULFILLED' if results["reliable_1"] else 'CRITERIA NOT FULFILLED'} \t\t\t ",
+        f"{data["F0"]:.2f} {'>' if results["reliable_1"] else '<'} {10/data["winlength"]}"
     )
     
     print(
         "RELIABLE 2:",
-        f"{data["winlength"]*data["window"]*data["F0"]} {'>' if results["nc"] else '<'} 200"
+        f"{'CRITERIA FULFILLED' if results["reliable_2"] else 'CRITERIA NOT FULFILLED'} \t\t\t ",
+        f"{data["winlength"]*data["window"]*data["F0"]:.2f} {'>' if results["nc"] else '<'} 200"
     )
 
     print(
         "RELIABLE 3:",
-        # f"{'\u03C3 H/V(f) > 2' if data["frhv"] > 0.5 * data["F0"] else }"
-        f"\u03C3 H/V(f) {'<' if results["reliable_3"] else '>'} 2"
+        f"{'CRITERIA FULFILLED' if results["reliable_3"] else 'CRITERIA NOT FULFILLED'} \t\t\t ",
+        f"{data["stdhv"][0]:.2f} {'<' if results["reliable_3"] else '>'} 2"
+    )
+    
+    print("\nCLEAR PEAK OUTPUT")
+    
+    idfr1 = np.where(
+        (data["frhv"] >= data["F0"] / 4)
+        & (data["frhv"] <= data["F0"])
+    )[0]
+
+    idfr2 = np.where(
+        (data["frhv"] >= data["F0"])
+        & (data["frhv"] <= 4 * data["F0"])
+    )[0]
+    
+    print(
+        "CLEAR PEAK 1:", 
+        f"{'CRITERIA FULFILLED' if np.any(data["hvsr"][idfr1] < data["A0"]/2) else 'CRITERIA NOT FULFILLED'} \t\t ",
+        f"A_H/V(f\u207b) {'<' if data["A0"]/2 else '>'} {(data["A0"]/2):.2f}"
     )
 
-    # Add all the clear peak output later
+    print(
+        "CLEAR PEAK 2:",
+        f"{'CRITERIA FULFILLED' if np.any(data["hvsr"][idfr2] < data["A0"]/2) else 'CRITERIA NOT FULFILLED'} \t\t ",
+        f"A_H/V(f\u207a) {'<' if data["A0"]/2 else '>'} {(data["A0"]/2):.2f}"
+    )
+
+    print(
+        "CLEAR PEAK 3:",
+        f"{'CRITERIA FULFILLED' if data["A0"] > 2 else  "CRITERIA NOT FULFILLED"} \t\t ",
+        f"{data["A0"]:.2f} {'>' if data["A0"] > 2 else '<'} 2"
+    )
+
+    print(
+        "CLEAR PEAK 4:",
+        f"{'CRITERIA FULFILLED' if results["clear_4"] else 'CRITERIA NOT FULFILLED'} \t\t ",
+        f"f_0 {'±' if results["clear_4"] else 'GREATER THAN'} 5%"
+    )
+
+    print(
+        "CLEAR PEAK 5:",
+        f"{'CRITERIA FULFILLED' if results["clear_5"] else 'CRITERIA NOT FULFILLED'} \t\t ",
+        f"{data['stdf0']:.2f} {'<' if data["stdf0"] < epsilon_f0(data["F0"]) else '>'} {epsilon_f0(data["F0"]):.2f}"
+    )
+
+    print(
+        "CLEAR PEAK 6:",
+        f"{'CRITERIA FULFILLED' if results["clear_6"] else 'CRITERIA NOT FULFILLED'} \t\t ",
+        f"{data["stdA"]:.2f} {'<' if data["stdA"] < theta_f0(data["F0"]) else '>'} {theta_f0(data["F0"]):.2f}"
+    )

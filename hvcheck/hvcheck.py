@@ -138,6 +138,13 @@ def hvsrcheck(data):
 
     clear.append(cp6)
 
+    results["clear_1"] = cp1
+    results["clear_2"] = cp2
+    results["clear_3"] = cp3
+    results["clear_4"] = cp4
+    results["clear_5"] = cp5
+    results["clear_6"] = cp6
+
     results["clear_count"] = int(sum(clear))
     results["is_clear_peak"] = int(sum(clear)) >= 5
     results["clear_vector"] = clear
