@@ -34,7 +34,7 @@ def print_report(data, results):
     print(f"File Name\t\t: {data['filename']}")
     print("-----------------------------------------------------------------------")
 
-    print("\nCRITERIA FOR A RELIABLE H/V CURVE")
+    print("CRITERIA FOR A RELIABLE H/V CURVE")
 
     print(
         "RELIABLE 1:",
@@ -130,3 +130,5 @@ def all_output(data, results):
         f"{'CRITERIA FULFILLED' if results["clear_6"] else 'CRITERIA NOT FULFILLED'} \t\t ",
         f"{data["stdA"]:.2f} {'<' if data["stdA"] < theta_f0(data["F0"]) else '>'} {theta_f0(data["F0"]):.2f}"
     )
+
+    print("-----------------------------------------------------------------------")
