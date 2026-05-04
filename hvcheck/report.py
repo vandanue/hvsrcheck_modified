@@ -157,4 +157,4 @@ def save_csv(data, results):
 
     df.to_csv("sesame_criteria.csv", mode="a", index=False, header=not os.path.exists("sesame_criteria.csv"))
 
-    # output = [names] + list(reliable) + list(clear)
+    # need to add later: result counter
