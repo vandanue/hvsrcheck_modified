@@ -1,4 +1,6 @@
 import numpy as np
+import pandas as pd
+import os
 
 def epsilon_f0(F0):
 
@@ -132,3 +134,27 @@ def all_output(data, results):
     )
 
     print("-----------------------------------------------------------------------")
+
+def save_csv(data, results):
+    names = data["filename"]
+    reliable = results["reliable_1"], results["reliable_2"], results["reliable_3"]
+    clear = results["clear_1"], results["clear_2"], results["clear_3"], results["clear_4"], results["clear_5"], results["clear_6"]
+
+    row = {
+        "FILENAME": names,
+        "RELIABLE 1": reliable[0],
+        "RELIABLE 2": reliable[1],
+        "RELIABLE 3": reliable[2],
+        "CLEAR PEAK 1": clear[0],
+        "CLEAR PEAK 2": clear[1],
+        "CLEAR PEAK 3": clear[2],
+        "CLEAR PEAK 4": clear[3],
+        "CLEAR PEAK 5": clear[4],
+        "CLEAR PEAK 6": clear[5]
+    }
+
+    df = pd.DataFrame([row])
+
+    df.to_csv("sesame_criteria.csv", mode="a", index=False, header=not os.path.exists("sesame_criteria.csv"))
+
+    # output = [names] + list(reliable) + list(clear)

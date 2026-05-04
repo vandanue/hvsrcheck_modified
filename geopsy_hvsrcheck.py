@@ -29,7 +29,7 @@ os.chdir(r"/media/vandanu/HDD/00_College/Asdos/Kulon_Progo/passive_seismic/hvsr"
 import os
 from hvcheck.io import read_hv_file, read_log_file
 from hvcheck.hvcheck import hvsrcheck
-from hvcheck.report import print_report, all_output
+from hvcheck.report import print_report, all_output, save_csv
 
 
 def process_hvsr(prefix):
@@ -58,6 +58,7 @@ def process_hvsr(prefix):
 
     print_report(data, results)
     all_output(data, results)
+    save_csv(data, results)
 
 
 def main():
