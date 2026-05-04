@@ -18,19 +18,12 @@
 # ------------------------------------------------------------------------------------------------------------------------------------------
 
 import os
-# import numpy as np
-# import pandas as pd
-# import re
-# from hvcheck import hvsrcheck
-
-# Change the folder to your .hv and .log files
-os.chdir(r"/media/vandanu/HDD/00_College/Asdos/Kulon_Progo/passive_seismic/hvsr")
-
-import os
 from hvcheck.io import read_hv_file, read_log_file
 from hvcheck.hvcheck import hvsrcheck
 from hvcheck.report import print_report, all_output, save_csv
 
+# Change the folder to your .hv and .log files
+os.chdir(r"/media/vandanu/HDD/00_College/Asdos/Kulon_Progo/passive_seismic/hvsr")
 
 def process_hvsr(prefix):
 
