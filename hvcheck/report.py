@@ -159,5 +159,3 @@ def save_csv(data, results):
     df = pd.DataFrame([row])
 
     df.to_csv("sesame_criteria.csv", mode="a", index=False, header=not os.path.exists("sesame_criteria.csv"))
-
-    # need to add later: result counter
