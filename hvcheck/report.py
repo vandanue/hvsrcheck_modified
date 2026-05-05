@@ -139,6 +139,7 @@ def save_csv(data, results):
     names = data["filename"]
     reliable = results["reliable_1"], results["reliable_2"], results["reliable_3"]
     clear = results["clear_1"], results["clear_2"], results["clear_3"], results["clear_4"], results["clear_5"], results["clear_6"]
+    counter = results["reliable_count"], results["clear_count"]
 
     row = {
         "FILENAME": names,
@@ -150,7 +151,9 @@ def save_csv(data, results):
         "CLEAR PEAK 3": clear[2],
         "CLEAR PEAK 4": clear[3],
         "CLEAR PEAK 5": clear[4],
-        "CLEAR PEAK 6": clear[5]
+        "CLEAR PEAK 6": clear[5],
+        "# RELIABILITY": counter[0],
+        "# CLEAR PEAK": counter[1]
     }
 
     df = pd.DataFrame([row])

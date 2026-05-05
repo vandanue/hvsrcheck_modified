@@ -72,6 +72,13 @@ def hvsrcheck(data):
     results["reliable_3"] = r3
     results["nc"] = nc
 
+    reliable = []
+    reliable.append(r1)
+    reliable.append(r2)
+    reliable.append(r3)
+
+    results["reliable_count"] = reliable.count(True)
+
     # -------------------------
     # CLEAR PEAK
     # -------------------------
