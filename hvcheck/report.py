@@ -34,8 +34,9 @@ def print_report(data, results):
 
     print("\n\n\n-----------------------------------------------------------------------")
     print(f"File Name\t\t: {data['filename']}")
-    print(f"f0\t\t\t: {data["F0"]} Hz")
-    print(f"A0\t\t\t: {data["A0"]}")
+    print(f"f0\t\t\t: {data["F0"]:.2f} Hz")
+    print(f"A0\t\t\t: {data["A0"]:.2f}")
+    print(f"Kg\t\t\t: {data["KG"]:.2f}")
     print("-----------------------------------------------------------------------")
 
     print("CRITERIA FOR A RELIABLE H/V CURVE")
@@ -139,7 +140,7 @@ def all_output(data, results):
 
 def save_csv(data, results, csv_files):
     names = data["filename"]
-    output = data["F0"], data["A0"]
+    output = data["F0"], data["A0"], data["KG"]
     reliable = results["reliable_1"], results["reliable_2"], results["reliable_3"]
     clear = results["clear_1"], results["clear_2"], results["clear_3"], results["clear_4"], results["clear_5"], results["clear_6"]
     counter = results["reliable_count"], results["clear_count"]
@@ -148,6 +149,7 @@ def save_csv(data, results, csv_files):
         "FILENAME": names,
         "f0 (Hz)": output[0],
         "A0": output[1],
+        "Kg": output[2],
         "RELIABLE 1": reliable[0],
         "RELIABLE 2": reliable[1],
         "RELIABLE 3": reliable[2],
