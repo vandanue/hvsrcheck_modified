@@ -137,7 +137,7 @@ def all_output(data, results):
 
     print("-----------------------------------------------------------------------")
 
-def save_csv(data, results):
+def save_csv(data, results, csv_files):
     names = data["filename"]
     output = data["F0"], data["A0"]
     reliable = results["reliable_1"], results["reliable_2"], results["reliable_3"]
@@ -163,4 +163,4 @@ def save_csv(data, results):
 
     df = pd.DataFrame([row])
 
-    df.to_csv("sesame_criteria.csv", mode="a", index=False, header=not os.path.exists("sesame_criteria.csv"))
+    df.to_csv(csv_files, mode="a", index=False, header=not os.path.exists(csv_files))

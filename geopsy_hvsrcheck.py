@@ -24,6 +24,7 @@ from hvcheck.report import print_report, all_output, save_csv
 
 # Change the folder to your .hv and .log files
 os.chdir(r"/media/vandanu/HDD/00_College/Asdos/Kulon_Progo/passive_seismic/hvsr")
+csv_files = "kulon_progo.csv"
 
 def process_hvsr(prefix):
 
@@ -51,17 +52,23 @@ def process_hvsr(prefix):
 
     print_report(data, results)
     all_output(data, results)
-    save_csv(data, results)
+    save_csv(data, results, csv_files)
 
 
 def main():
+
+    if os.path.exists(csv_files):
+        os.remove(csv_files)
 
     files = [
         f for f in os.listdir()
         if f.endswith(".hv")
     ]
 
-    prefixes = {f[:-3] for f in files}
+    prefixes = sorted(
+        {f[:-3] for f in files},
+        key=lambda x: int(x[1:])
+    )
 
     for prefix in prefixes:
 
