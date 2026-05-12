@@ -11,7 +11,7 @@ setuptools.setup(
     description="Program to check reliable and clear peak of H/V curve. Edited program from khalqillah's repository",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/auliakhalqillah/hvcheck",
+    url="https://github.com/vandanue/hvsrcheck_modified",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
