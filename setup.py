@@ -1,14 +1,14 @@
 import setuptools
 
-with open("README.md","r") as fh:
+with open("README.md","r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="hvcheck",
+    name="hvsrcheck_modified",
     version="0.2",
-    author="Aulia Khalqillah",
-    author_email="auliakhalqillah.mail@gmail.com",
-    description="Program to check reliable and clear peak of H/V curve",
+    author="Annora Vandanu Erlangga",
+    author_email="annora.vandanu@ui.ac.id",
+    description="Program to check reliable and clear peak of H/V curve. Edited program from khalqillah's repository",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/auliakhalqillah/hvcheck",
