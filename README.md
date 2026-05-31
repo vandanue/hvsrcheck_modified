@@ -35,9 +35,10 @@ if the modules has been successfully installed, the information of reliable and 
 
 ```
 -----------------------------------------------------------------------
-File Name		: S42.hv
-f0			: 3.9589 Hz
-A0			: 3.76757
+File Name		: SN30.hv
+f0			: 1.24 Hz
+A0			: 4.01
+Kg			: 12.97
 -----------------------------------------------------------------------
 CRITERIA FOR A RELIABLE H/V CURVE
 RELIABLE 1: OK
@@ -49,55 +50,57 @@ H/V IS CLEAR PEAK
 
 -----------------------------------------------------------------------
 RELIABILITY OUTPUT
-RELIABLE 1: CRITERIA FULFILLED 			  3.96 > 0.2222222222222222
-RELIABLE 2: CRITERIA FULFILLED 			  10332.73 > 200
-RELIABLE 3: CRITERIA FULFILLED 			  0.56 < 2
+RELIABLE 1: CRITERIA FULFILLED 			  f0 = 1.24 > 0.25
+RELIABLE 2: CRITERIA FULFILLED 			  n_c = 397.32 > 200
+RELIABLE 3: CRITERIA FULFILLED 			  σA(f) = 0.33 < 2.00 (f0 > 0.5 Hz)
 
 CLEAR PEAK OUTPUT
-CLEAR PEAK 1: CRITERIA FULFILLED 		  A_H/V(f⁻) < 1.88
-CLEAR PEAK 2: CRITERIA FULFILLED 		  A_H/V(f⁺) < 1.88
-CLEAR PEAK 3: CRITERIA FULFILLED 		  3.77 > 2
-CLEAR PEAK 4: CRITERIA FULFILLED 		  f_0 ± 5%
-CLEAR PEAK 5: CRITERIA NOT FULFILLED 		  0.44 > 0.20
-CLEAR PEAK 6: CRITERIA FULFILLED 		  1.32 < 1.58
+CLEAR PEAK 1: CRITERIA FULFILLED 		 A_H/V(0.31 Hz) = 1.51 < A0/2 = 2.01
+CLEAR PEAK 2: CRITERIA FULFILLED 		 A_H/V(1.77 Hz) = 1.95 < A0/2 = 2.01
+CLEAR PEAK 3: CRITERIA FULFILLED 		  A_0 = 4.01 > 2
+CLEAR PEAK 4: CRITERIA NOT FULFILLED 		  f_0 = 1.24 Hz outside [1.18, 1.30] Hz
+CLEAR PEAK 5: CRITERIA FULFILLED 		  σf = 0.11 within ε(f0) = 0.12
+CLEAR PEAK 6: CRITERIA FULFILLED 		  σ_A(f0) = 1.26 within θ(f0) = 1.78
 -----------------------------------------------------------------------
 
 
 
 -----------------------------------------------------------------------
-File Name		: S55.hv
-f0			: 6.5853 Hz
-A0			: 2.0051
+File Name		: SN31.hv
+f0			: 1.41 Hz
+A0			: 4.58
+Kg			: 14.82
 -----------------------------------------------------------------------
 CRITERIA FOR A RELIABLE H/V CURVE
 RELIABLE 1: OK
 RELIABLE 2: OK
 RELIABLE 3: OK
 
-CLEAR PEAK SUMMARY: 3 out of 6
-H/V IS NOT CLEAR PEAK
+CLEAR PEAK SUMMARY: 6 out of 6
+H/V IS CLEAR PEAK
 
 -----------------------------------------------------------------------
 RELIABILITY OUTPUT
-RELIABLE 1: CRITERIA FULFILLED 			  6.59 > 0.25
-RELIABLE 2: CRITERIA FULFILLED 			  5004.83 > 200
-RELIABLE 3: CRITERIA FULFILLED 			  0.43 < 2
+RELIABLE 1: CRITERIA FULFILLED 			  f0 = 1.41 > 0.25
+RELIABLE 2: CRITERIA FULFILLED 			  n_c = 565.51 > 200
+RELIABLE 3: CRITERIA FULFILLED 			  σA(f) = 0.40 < 2.00 (f0 > 0.5 Hz)
 
 CLEAR PEAK OUTPUT
-CLEAR PEAK 1: CRITERIA NOT FULFILLED 		  A_H/V(f⁻) < 1.00
-CLEAR PEAK 2: CRITERIA NOT FULFILLED 		  A_H/V(f⁺) < 1.00
-CLEAR PEAK 3: CRITERIA FULFILLED 		  2.01 > 2
-CLEAR PEAK 4: CRITERIA FULFILLED 		  f_0 ± 5%
-CLEAR PEAK 5: CRITERIA NOT FULFILLED 		  1.27 > 0.33
-CLEAR PEAK 6: CRITERIA FULFILLED 		  1.16 < 1.58
+CLEAR PEAK 1: CRITERIA FULFILLED 		 A_H/V(0.36 Hz) = 1.00 < A0/2 = 2.29
+CLEAR PEAK 2: CRITERIA FULFILLED 		 A_H/V(1.85 Hz) = 2.27 < A0/2 = 2.29
+CLEAR PEAK 3: CRITERIA FULFILLED 		  A_0 = 4.58 > 2
+CLEAR PEAK 4: CRITERIA FULFILLED 		  f_0 = 1.41 Hz inside [1.34, 1.48] Hz
+CLEAR PEAK 5: CRITERIA FULFILLED 		  σf = 0.10 within ε(f0) = 0.14
+CLEAR PEAK 6: CRITERIA FULFILLED 		  σ_A(f0) = 1.19 within θ(f0) = 1.78
 -----------------------------------------------------------------------
 
 
 
 -----------------------------------------------------------------------
-File Name		: S35.hv
-f0			: 5.57263 Hz
-A0			: 6.02144
+File Name		: SN32.hv
+f0			: 2.29 Hz
+A0			: 2.43
+Kg			: 2.57
 -----------------------------------------------------------------------
 CRITERIA FOR A RELIABLE H/V CURVE
 RELIABLE 1: OK
@@ -109,18 +112,19 @@ H/V IS CLEAR PEAK
 
 -----------------------------------------------------------------------
 RELIABILITY OUTPUT
-RELIABLE 1: CRITERIA FULFILLED 			  5.57 > 0.25
-RELIABLE 2: CRITERIA FULFILLED 			  6687.16 > 200
-RELIABLE 3: CRITERIA FULFILLED 			  0.64 < 2
+RELIABLE 1: CRITERIA FULFILLED 			  f0 = 2.29 > 0.25
+RELIABLE 2: CRITERIA FULFILLED 			  n_c = 1282.19 > 200
+RELIABLE 3: CRITERIA FULFILLED 			  σA(f) = 0.24 < 2.00 (f0 > 0.5 Hz)
 
 CLEAR PEAK OUTPUT
-CLEAR PEAK 1: CRITERIA FULFILLED 		  A_H/V(f⁻) < 3.01
-CLEAR PEAK 2: CRITERIA FULFILLED 		  A_H/V(f⁺) < 3.01
-CLEAR PEAK 3: CRITERIA FULFILLED 		  6.02 > 2
-CLEAR PEAK 4: CRITERIA FULFILLED 		  f_0 ± 5%
-CLEAR PEAK 5: CRITERIA NOT FULFILLED 		  0.48 > 0.28
-CLEAR PEAK 6: CRITERIA FULFILLED 		  1.43 < 1.58
+CLEAR PEAK 1: CRITERIA FULFILLED 		 A_H/V(0.58 Hz) = 1.12 < A0/2 = 1.21
+CLEAR PEAK 2: CRITERIA FULFILLED 		 A_H/V(4.67 Hz) = 1.21 < A0/2 = 1.21
+CLEAR PEAK 3: CRITERIA FULFILLED 		  A_0 = 2.43 > 2
+CLEAR PEAK 4: CRITERIA FULFILLED 		  f_0 = 2.29 Hz inside [2.18, 2.40] Hz
+CLEAR PEAK 5: CRITERIA NOT FULFILLED 		  σf = 0.35 exceeds ε(f0) = 0.11
+CLEAR PEAK 6: CRITERIA FULFILLED 		  σ_A(f0) = 1.17 within θ(f0) = 1.58
 -----------------------------------------------------------------------
+
 ```
 
 To run with your Geopsy files, you just need change the file name and log name in `geopsy_hvsrcheck.py` file.
