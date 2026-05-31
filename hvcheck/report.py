@@ -73,67 +73,113 @@ def all_output(data, results):
     print(
         "RELIABLE 1:",
         f"{'CRITERIA FULFILLED' if results["reliable_1"] else 'CRITERIA NOT FULFILLED'} \t\t\t ",
-        f"{data["F0"]:.2f} {'>' if results["reliable_1"] else '<'} {10/data["winlength"]}"
+        f"f0 = {data["F0"]:.2f} {'>' if results["reliable_1"] else '<'} {10/data["winlength"]}"
     )
     
     print(
         "RELIABLE 2:",
         f"{'CRITERIA FULFILLED' if results["reliable_2"] else 'CRITERIA NOT FULFILLED'} \t\t\t ",
-        f"{data["winlength"]*data["window"]*data["F0"]:.2f} {'>' if results["nc"] else '<'} 200"
+        f"n_c = {data["winlength"]*data["window"]*data["F0"]:.2f} {'>' if results["nc"] else '<'} 200"
     )
+
+    threshold = 2 if data["F0"] > 0.5 else 3
+
+    if results["reliable_3"]:
+        msg = (
+            f"\u03C3A(f) = {data['stdhv'][0]:.2f} < "
+            f"{threshold:.2f} "
+            f"(f0 {'>' if data['F0'] > 0.5 else '<'} 0.5 Hz)"
+        )
+    else:
+        msg = (
+            f"\u03C3A(f) = {data['stdhv'][0]:.2f} exceeds "
+            f"{threshold:.2f} "
+            f"(f0 {'>' if data['F0'] > 0.5 else '<'} 0.5 Hz)"
+        )
 
     print(
         "RELIABLE 3:",
-        f"{'CRITERIA FULFILLED' if results["reliable_3"] else 'CRITERIA NOT FULFILLED'} \t\t\t ",
-        f"{data["stdhv"][0]:.2f} {'<' if results["reliable_3"] else '>'} 2"
+        f"{'CRITERIA FULFILLED' if results['reliable_3'] else 'CRITERIA NOT FULFILLED'} \t\t\t ",
+        msg
     )
+
     
     print("\nCLEAR PEAK OUTPUT")
     
     idfr1 = np.where(
-        (data["frhv"] >= data["F0"] / 4)
+        (data["frhv"] >= data["F0"]/4)
         & (data["frhv"] <= data["F0"])
     )[0]
 
+    idx = np.where(data["hvsr"][idfr1] < data["A0"]/2)[0]
+
+    if len(idx) > 0:
+        i = idfr1[idx[0]]
+
+        print(
+            "CLEAR PEAK 1:",
+            "CRITERIA FULFILLED \t\t",
+            f"A_H/V({data['frhv'][i]:.2f} Hz) = "
+            f"{data['hvsr'][i]:.2f} < A0/2 = {data['A0']/2:.2f}"
+        )
+    else:
+        print(
+            "CLEAR PEAK 1:",
+            "CRITERIA NOT FULFILLED \t\t",
+            f"No frequency in "
+            f"[{data['F0']/4:.2f}, {data['F0']:.2f}] Hz "
+            f"where A_H/V < {data['A0']/2:.2f}"
+        )
+
     idfr2 = np.where(
         (data["frhv"] >= data["F0"])
-        & (data["frhv"] <= 4 * data["F0"])
+        & (data["frhv"] <= 4*data["F0"])
     )[0]
+
+    idx = np.where(data["hvsr"][idfr2] < data["A0"]/2)[0]
+
+    if len(idx) > 0:
+        i = idfr2[idx[0]]
+
+        print(
+            "CLEAR PEAK 2:",
+            "CRITERIA FULFILLED \t\t",
+            f"A_H/V({data['frhv'][i]:.2f} Hz) = "
+            f"{data['hvsr'][i]:.2f} < A0/2 = {data['A0']/2:.2f}"
+        )
+
+    else:
+        print(
+            "CLEAR PEAK 2:",
+            "CRITERIA NOT FULFILLED \t\t",
+            f"No frequency in "
+            f"[{data['F0']:.2f}, {4*data['F0']:.2f}] Hz "
+            f"where A_H/V < {data['A0']/2:.2f}"
+        )
     
-    print(
-        "CLEAR PEAK 1:", 
-        f"{'CRITERIA FULFILLED' if np.any(data["hvsr"][idfr1] < data["A0"]/2) else 'CRITERIA NOT FULFILLED'} \t\t ",
-        f"A_H/V(f\u207b) {'<' if data["A0"]/2 else '>'} {(data["A0"]/2):.2f}"
-    )
-
-    print(
-        "CLEAR PEAK 2:",
-        f"{'CRITERIA FULFILLED' if np.any(data["hvsr"][idfr2] < data["A0"]/2) else 'CRITERIA NOT FULFILLED'} \t\t ",
-        f"A_H/V(f\u207a) {'<' if data["A0"]/2 else '>'} {(data["A0"]/2):.2f}"
-    )
-
     print(
         "CLEAR PEAK 3:",
         f"{'CRITERIA FULFILLED' if data["A0"] > 2 else  "CRITERIA NOT FULFILLED"} \t\t ",
-        f"{data["A0"]:.2f} {'>' if data["A0"] > 2 else '<'} 2"
+        f"A_0 = {data["A0"]:.2f} {'>' if data["A0"] > 2 else '<'} 2"
     )
 
     print(
         "CLEAR PEAK 4:",
         f"{'CRITERIA FULFILLED' if results["clear_4"] else 'CRITERIA NOT FULFILLED'} \t\t ",
-        f"f_0 {'±' if results["clear_4"] else 'GREATER THAN'} 5%"
+        f"f_0 = {data["F0"]:.2f} Hz", f"{'inside' if results["clear_4"] else 'outside'}", f"[{data["F0"] * 0.95:.2f}, {data["F0"] * 1.05:.2f}] Hz"
     )
 
     print(
         "CLEAR PEAK 5:",
         f"{'CRITERIA FULFILLED' if results["clear_5"] else 'CRITERIA NOT FULFILLED'} \t\t ",
-        f"{data['stdf0']:.2f} {'<' if data["stdf0"] < epsilon_f0(data["F0"]) else '>'} {epsilon_f0(data["F0"]):.2f}"
+        f"\u03C3f = {data["stdf0"]:.2f}", f"{'within' if results["clear_5"] else 'exceeds'}", f"\u03B5(f0) = {epsilon_f0(data["F0"]):.2f}"
     )
 
     print(
         "CLEAR PEAK 6:",
         f"{'CRITERIA FULFILLED' if results["clear_6"] else 'CRITERIA NOT FULFILLED'} \t\t ",
-        f"{data["stdA"]:.2f} {'<' if data["stdA"] < theta_f0(data["F0"]) else '>'} {theta_f0(data["F0"]):.2f}"
+        f"\u03C3_A(f0) = {data["stdA"]:.2f}", f"{'within' if results["clear_6"] else 'exceeds'}", f"\u03B8(f0) = {theta_f0(data["F0"]):.2f}"
+        # f"{data["stdA"]:.2f} {'<' if data["stdA"] < theta_f0(data["F0"]) else '>'} {theta_f0(data["F0"]):.2f}"
     )
 
     print("-----------------------------------------------------------------------")
