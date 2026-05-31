@@ -18,13 +18,14 @@
 # ------------------------------------------------------------------------------------------------------------------------------------------
 
 import os
+import re
 from hvcheck.io import read_hv_file, read_log_file
 from hvcheck.hvcheck import hvsrcheck
 from hvcheck.report import print_report, all_output, save_csv
 
 # Change the folder to your .hv and .log files
-os.chdir(r"/media/vandanu/HDD/00_College/Asdos/Kulon_Progo/passive_seismic/hvsr")
-csv_files = "kulon_progo.csv"
+os.chdir(r"/media/vandanu/HDD/Project/Penelitian Tapanuli Selatan/01_processing/hvsr")
+csv_files = "tapanuli.csv"
 
 def process_hvsr(prefix):
 
@@ -67,7 +68,7 @@ def main():
 
     prefixes = sorted(
         {f[:-3] for f in files},
-        key=lambda x: int(x[1:])
+        key=lambda x: (re.match(r'[A-Za-z]+', x).group(),int(re.search(r'\d+$', x).group()))
     )
 
     for prefix in prefixes:
